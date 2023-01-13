@@ -12,3 +12,18 @@ class PostForm(forms.ModelForm):
             'author': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Select Author'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write your post here...'}),
         }
+
+
+
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Post 
+        fields = ('title', 'title_tag', 'body')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'This is Title placeholder'}),
+            'title_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Title tag'}),
+            #'author': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Select Author'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write your post here...'}),
+        }
