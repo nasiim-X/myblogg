@@ -9,6 +9,7 @@ choice_list = []
 for item in choices:
     choice_list.append(item)
 
+
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post 
@@ -17,7 +18,8 @@ class PostForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'title_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Add a Title tag'}),
-            'author': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Select Author'}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'value': ' ', 'id':'nasiim', 'type':'hidden'}),
+            #'author': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Select Author'}),
             'category': forms.Select(choices=choice_list, attrs={'class': 'form-control', 'placeholder': 'Select Category'}),
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Write your post here...'}),
         }
