@@ -44,7 +44,7 @@ class ArticleDetailView(DetailView):
         context = super(ArticleDetailView, self).get_context_data(*args, **kwarks)
         
         stuff = get_object_or_404(Post, id = self.kwargs['pk'])
-        total_likes = 
+        total_likes = stuff.total_likes()
         context["cat_menu"] = cat_menu
         context["total_likes"] = total_likes 
         return context 
