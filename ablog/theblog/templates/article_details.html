@@ -58,18 +58,20 @@
 <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-md-2">
-        <img src="..." class="card-img" alt="...">
+        <img src="{{ post.author.profile.profile_pic.url }}" class="card-img">
       </div>
       <div class="col-md-10">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title">{{ post.author.first_name }} {{ post.author.last_name}}</h5>
+          <p class="small text-muted">
+            Website | Facebook | Twitter | Instagram
+          </p>
+          <p class="card-text">{{ post.author.profile.bio }}</p>
         </div>
       </div>
     </div>
 </div>
 
-<img src="{{ post.author.profile.profile_pic.url }}" width=200 height=200 class="rounded-circle">
+
 
 {% endblock %} 
