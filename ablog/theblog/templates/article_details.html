@@ -35,22 +35,41 @@
 <br/><br/>
 <hr>
 <br/>
-<form action="{% url 'like_post' post.pk %}" method="POST">
-    {% csrf_token %}
+    <form action="{% url 'like_post' post.pk %}" method="POST">
+        {% csrf_token %}
 
-{% if user.is_authenticated %}
-    {% if liked %}
-        <button type="submit", name="post_id", value="{{ post.id }}", 
-        class="btn btn-danger btn-sm">Unlike</button>
+    {% if user.is_authenticated %}
+        {% if liked %}
+            <button type="submit", name="post_id", value="{{ post.id }}", 
+            class="btn btn-danger btn-sm">Unlike</button>
+        {% else %}
+            <button type="submit", name="post_id", value="{{ post.id }}", 
+            class="btn btn-primary btn-sm">Like</button>
+        {% endif %}
     {% else %}
-        <button type="submit", name="post_id", value="{{ post.id }}", 
-        class="btn btn-primary btn-sm">Like</button>
+        <small><a href="{% url 'login' %}">Login</a> to like</small>
     {% endif %}
-{% else %}
-    <small><a href="{% url 'login' %}">Login</a> to like</small>
-{% endif %}
-    
-    - {{ total_likes }} Likes
-</form>
+        
+        - {{ total_likes }} Likes
+    </form>
+
+<br/><br/>
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-2">
+        <img src="..." class="card-img" alt="...">
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<img src="{{ post.author.profile.profile_pic.url }}" width=200 height=200 class="rounded-circle">
 
 {% endblock %} 
